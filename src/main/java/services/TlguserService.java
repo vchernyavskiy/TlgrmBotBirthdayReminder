@@ -15,4 +15,12 @@ public class TlguserService {
         tlguserDAOImpl.save(tlguser);
     }
 
+    public static void updateTlguser(Tlguser tlguser) {
+        tlguserDAOImpl.update(tlguser);
+    }
+
+    public static void deleteTlguser(Tlguser tlguser) {
+        tlguserDAOImpl.delete(tlguser);
+    }
+
 }

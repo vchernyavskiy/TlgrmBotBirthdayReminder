@@ -21,10 +21,16 @@ public class AddCommand extends OperationCommand{
 
         if (tlguser == null) {
             msg = "create";
+
             tlguser = new Tlguser(chatId, "new", user.getUserName(), user.getFirstName(), user.getLastName());
             TlguserService.saveTlguser(tlguser);
         } else {
             msg = "update";
+
+            tlguser.setUsername(user.getUserName());
+            tlguser.setFirstname(user.getFirstName());
+            tlguser.setLastname(user.getLastName());
+            TlguserService.updateTlguser(tlguser);
         }
 
         sendAnswer(absSender, chat.getId(), msg);

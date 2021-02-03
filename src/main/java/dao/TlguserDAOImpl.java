@@ -27,4 +27,20 @@ public class TlguserDAOImpl implements TlguserDAO{
         session.close();
     }
 
+    public void update(Tlguser tlguser) {
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Transaction tx1 = session.beginTransaction();
+        session.update(tlguser);
+        tx1.commit();
+        session.close();
+    }
+
+    public void delete(Tlguser tlguser) {
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Transaction tx1 = session.beginTransaction();
+        session.delete(tlguser);
+        tx1.commit();
+        session.close();
+    }
+
 }
