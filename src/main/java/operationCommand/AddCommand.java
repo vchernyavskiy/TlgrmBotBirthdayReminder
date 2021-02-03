@@ -15,12 +15,14 @@ public class AddCommand extends OperationCommand{
     public void execute(AbsSender absSender, User user, Chat chat, String[] strings) {
 
         String msg;
+        Long chatId = chat.getId();
 
-        Tlguser tlguser = TlguserService.findTlguserByChatId(chat.getId());
+        Tlguser tlguser = TlguserService.findTlguserByChatId(chatId);
 
         if (tlguser == null) {
             msg = "create";
-            //TlguserService.saveTlguser(tlguser);
+            tlguser = new Tlguser(chatId, "new", user.getUserName(), user.getFirstName(), user.getLastName());
+            TlguserService.saveTlguser(tlguser);
         } else {
             msg = "update";
         }

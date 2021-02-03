@@ -24,9 +24,23 @@ public class Tlguser {
     public Tlguser() {
     }
 
-    public Tlguser(int chatid, String state) {
+    public Tlguser(long chatid, String state) {
         this.chatid = chatid;
         this.state = state;
+    }
+
+    public Tlguser(long chatid, String state, String username) {
+        this.chatid = chatid;
+        this.state = state;
+        this.username = username;
+    }
+
+    public Tlguser(long chatid, String state, String username, String firstname, String lastname) {
+        this.chatid = chatid;
+        this.state = state;
+        this.username = username;
+        this.firstname = firstname;
+        this.lastname = lastname;
     }
 
     public int getId() {
