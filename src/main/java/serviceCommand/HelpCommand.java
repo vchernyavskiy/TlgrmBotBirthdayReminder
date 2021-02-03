@@ -18,6 +18,7 @@ public class HelpCommand extends ServiceCommand {
         String msgHelp = "Это бот для напоминания о днях рождения.\nСписок команд:";
 
         msgHelp += "\n /help - помощь";
+        msgHelp += "\n /add - добавить новое напоминание";
 
         sendAnswer(absSender, chat.getId(), msgHelp);
     }

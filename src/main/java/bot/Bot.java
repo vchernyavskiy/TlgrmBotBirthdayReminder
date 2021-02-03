@@ -1,6 +1,7 @@
 package bot;
 
 import nonCommand.NonCommand;
+import operationCommand.AddCommand;
 import serviceCommand.HelpCommand;
 import serviceCommand.StartCommand;
 import org.telegram.telegrambots.extensions.bots.commandbot.TelegramLongPollingCommandBot;
@@ -19,12 +20,11 @@ public class Bot extends TelegramLongPollingCommandBot {
         this.botName = botName;
         this.botToken = botToken;
 
-        //создаём вспомогательный класс для работы с сообщениями, не являющимися командами
         this.nonCommand = new NonCommand();
 
-        //регистрируем команды
         register(new StartCommand("start", "Старт"));
         register(new HelpCommand("help","Помощь"));
+        register(new AddCommand("add","Добавить напоминание"));
     }
 
     /**
