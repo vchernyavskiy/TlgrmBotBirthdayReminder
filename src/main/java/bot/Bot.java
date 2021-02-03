@@ -1,5 +1,6 @@
 package bot;
 
+import models.Tlguser;
 import nonCommand.NonCommand;
 import operationCommand.AddCommand;
 import serviceCommand.HelpCommand;
@@ -9,6 +10,7 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+import services.TlguserService;
 
 public class Bot extends TelegramLongPollingCommandBot {
 
@@ -32,11 +34,18 @@ public class Bot extends TelegramLongPollingCommandBot {
      */
     @Override
     public void processNonCommandUpdate(Update update) {
-        Message msg = update.getMessage();
-        Long chatId = msg.getChatId();
+        Message msgIn = update.getMessage();
+        Long chatId = msgIn.getChatId();
+        Tlguser tlguser = TlguserService.findTlguserByChatId(chatId);
 
-        String answer = nonCommand.nonCommandExecute(chatId, msg.getText());
-        sendMsg(chatId.toString(), answer);
+        String answerOut;
+        if (tlguser == null) {
+            answerOut = "Введите команду";
+        } else {
+            answerOut = nonCommand.nonCommandExecute(tlguser, msgIn.getText());
+        }
+
+        sendMsg(chatId.toString(), answerOut);
     }
 
     /**

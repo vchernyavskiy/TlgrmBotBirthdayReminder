@@ -14,25 +14,27 @@ public class AddCommand extends OperationCommand{
     @Override
     public void execute(AbsSender absSender, User user, Chat chat, String[] strings) {
 
-        String msg;
+        String answerOut;
         Long chatId = chat.getId();
 
         Tlguser tlguser = TlguserService.findTlguserByChatId(chatId);
 
         if (tlguser == null) {
-            msg = "create";
+            //log "create add";
 
-            tlguser = new Tlguser(chatId, "new", user.getUserName(), user.getFirstName(), user.getLastName());
+            tlguser = new Tlguser(chatId, "add", user.getUserName(), user.getFirstName(), user.getLastName());
             TlguserService.saveTlguser(tlguser);
         } else {
-            msg = "update";
+            //log "update add";
 
             tlguser.setUsername(user.getUserName());
             tlguser.setFirstname(user.getFirstName());
             tlguser.setLastname(user.getLastName());
+            tlguser.setState("add");
             TlguserService.updateTlguser(tlguser);
         }
 
-        sendAnswer(absSender, chat.getId(), msg);
+        answerOut = "Введите текст в формате \"дд.мм.гггг Описание\", например: \"12.12.2012 Зина Корзина\"";
+        sendAnswer(absSender, chat.getId(), answerOut);
     }
 }

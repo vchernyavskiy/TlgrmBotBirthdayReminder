@@ -9,7 +9,6 @@ import utils.HibernateSessionFactoryUtil;
 public class TlguserDAOImpl implements TlguserDAO{
 
     public Tlguser findByChatId(Long chatId) {
-
         String q = "from Tlguser where chatid =: chatId";
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Query query = session.createQuery(q).setParameter("chatId", chatId);

@@ -1,25 +1,31 @@
 package nonCommand;
 
+import models.Tlguser;
+
 /**
  * Обработка сообщения, не являющегося командой (т.е. обычного текста не начинающегося с "/")
  */
 public class NonCommand {
 
-    public String nonCommandExecute(Long chatId, String text) {
-        String answer;
-        answer = text;
-//        try {
-//            //добавляем настройки в мапу, чтобы потом их использовать для этого пользователя при генерации файла
-//            answer = "Настройки обновлены. Вы всегда можете их посмотреть с помощью /settings";
-//            //логируем событие, используя userName
-//        } catch (IllegalSettingsException e) {
-//            answer = e.getMessage() +
-//                    "\n\n Настройки не были изменены. Вы всегда можете их посмотреть с помощью /settings";
-//            //логируем событие, используя userName
-//        } catch (Exception e) {
-//            answer = "Простите, я не понимаю Вас. Возможно, Вам поможет /help";
-//            //логируем событие, используя userName
-//        }
-        return answer;
+    public String nonCommandExecute(Tlguser tlguser, String textIn) {
+        String answerOut;
+
+        if (tlguser.getState().equals("add")) {
+            if (textIsCorrectBD(textIn)) {
+                //добавляем ДР в список
+                answerOut = "Добавлено: " + textIn;
+            } else {
+                answerOut = "Введенный текст не соответствует формату";
+            }
+        } else {
+            answerOut = textIn;
+        }
+
+        return answerOut;
+    }
+
+    private boolean textIsCorrectBD(String text){
+        //проверка корректности текст на "ДР - описание"
+        return true;
     }
 }
