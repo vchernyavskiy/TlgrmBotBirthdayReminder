@@ -1,6 +1,9 @@
 package nonCommand;
 
+import models.Event;
 import models.Tlguser;
+import services.EventService;
+
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
@@ -26,6 +29,9 @@ public class NonCommand {
 
                 LocalDate localDate = (LocalDate)map.get("date");
                 String description = String.valueOf(map.get("description"));
+
+                Event event = new Event(description, localDate, tlguser);
+                EventService.saveEvent(event);
 
 
 
