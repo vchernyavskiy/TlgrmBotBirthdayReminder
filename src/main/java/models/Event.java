@@ -10,7 +10,7 @@ public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String name;
+    private String description;
     private LocalDate date;
     @ManyToOne (fetch = FetchType.LAZY)
     @JoinColumn (name="ownerid")
@@ -19,8 +19,8 @@ public class Event {
     public Event() {
     }
 
-    public Event(String name, LocalDate date, Tlguser owner) {
-        this.name = name;
+    public Event(String description, LocalDate date, Tlguser owner) {
+        this.description = description;
         this.date = date;
         this.owner = owner;
     }
@@ -29,12 +29,12 @@ public class Event {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getDescription() {
+        return description;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public LocalDate getDate() {

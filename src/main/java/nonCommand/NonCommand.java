@@ -33,9 +33,6 @@ public class NonCommand {
                 Event event = new Event(description, localDate, tlguser);
                 EventService.saveEvent(event);
 
-
-
-
                 answerOut = "Добавлено: " + textIn;
             } else {
                 answerOut = "Введенный текст не соответствует формату";
