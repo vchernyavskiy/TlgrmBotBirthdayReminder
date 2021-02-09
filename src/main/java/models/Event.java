@@ -1,7 +1,7 @@
 package models;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.util.Calendar;
 
 @Entity
 @Table(name = "events")
@@ -11,7 +11,7 @@ public class Event {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    private Date date;
+    private Calendar date;
     @ManyToOne (fetch = FetchType.LAZY)
     @JoinColumn (name="ownerid")
     private Tlguser owner;
@@ -19,7 +19,7 @@ public class Event {
     public Event() {
     }
 
-    public Event(String name, Date date, Tlguser owner) {
+    public Event(String name, Calendar date, Tlguser owner) {
         this.name = name;
         this.date = date;
         this.owner = owner;
@@ -37,11 +37,11 @@ public class Event {
         this.name = name;
     }
 
-    public Date getDate() {
+    public Calendar getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(Calendar date) {
         this.date = date;
     }
 
