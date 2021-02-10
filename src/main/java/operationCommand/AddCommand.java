@@ -20,12 +20,12 @@ public class AddCommand extends OperationCommand{
         Tlguser tlguser = TlguserService.findTlguserByChatId(chatId);
 
         if (tlguser == null) {
-            //log "create add";
+            //log "create user with add";
 
             tlguser = new Tlguser(chatId, "add", user.getUserName(), user.getFirstName(), user.getLastName());
             TlguserService.saveTlguser(tlguser);
         } else {
-            //log "update add";
+            //log "update user with add";
 
             tlguser.setUsername(user.getUserName());
             tlguser.setFirstname(user.getFirstName());

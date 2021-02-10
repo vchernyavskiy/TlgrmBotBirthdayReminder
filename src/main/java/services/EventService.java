@@ -2,6 +2,9 @@ package services;
 
 import dao.EventDAOImpl;
 import models.Event;
+import models.Tlguser;
+
+import java.util.List;
 
 public class EventService {
 
@@ -17,6 +20,10 @@ public class EventService {
 
     public static void updateEvent(Event event) {
         eventDAOImpl.update(event);
+    }
+
+    public static List<Event> selectEvents(Tlguser tlguser){
+        return eventDAOImpl.findAllByUser(tlguser);
     }
 
 }
