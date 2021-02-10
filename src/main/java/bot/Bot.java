@@ -2,15 +2,14 @@ package bot;
 
 import models.Tlguser;
 import nonCommand.NonCommand;
-import operationCommand.AddCommand;
-import serviceCommand.HelpCommand;
-import serviceCommand.StartCommand;
+import operationCommand.*;
+import serviceCommand.*;
+import services.TlguserService;
 import org.telegram.telegrambots.extensions.bots.commandbot.TelegramLongPollingCommandBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
-import services.TlguserService;
 
 public class Bot extends TelegramLongPollingCommandBot {
 
@@ -26,7 +25,11 @@ public class Bot extends TelegramLongPollingCommandBot {
 
         register(new StartCommand("start", "Старт"));
         register(new HelpCommand("help","Помощь"));
+
         register(new AddCommand("add","Добавить напоминание"));
+        register(new SelectCommand("select","Просмотреть напоминания"));
+        register(new UpdateCommand("update","Изменить напоминание"));
+        register(new DeleteCommand("delete","Удалить напоминание"));
     }
 
     /**

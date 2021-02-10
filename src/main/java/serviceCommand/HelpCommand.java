@@ -19,6 +19,9 @@ public class HelpCommand extends ServiceCommand {
 
         msgHelp += "\n /help - помощь";
         msgHelp += "\n /add - добавить новое напоминание";
+        msgHelp += "\n /select - просмотреть список напоминаний";
+        msgHelp += "\n /update - изменить напоминание";
+        msgHelp += "\n /delete - удалить напоминание";
 
         sendAnswer(absSender, chat.getId(), msgHelp);
     }
