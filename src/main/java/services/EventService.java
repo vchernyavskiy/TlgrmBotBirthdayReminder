@@ -18,9 +18,9 @@ public class EventService {
         eventDAOImpl.delete(event);
     }
 
-    public static void updateEvent(Event event) {
-        eventDAOImpl.update(event);
-    }
+//    public static void updateEvent(Event event) {
+//        eventDAOImpl.update(event);
+//    }
 
     public static List<Event> selectEvents(Tlguser tlguser){
         return eventDAOImpl.findAllByUser(tlguser);

@@ -19,13 +19,13 @@ public class EventDAOImpl implements EventDAO{
         session.close();
     }
 
-    public void update(Event event) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction tx1 = session.beginTransaction();
-        session.update(event);
-        tx1.commit();
-        session.close();
-    }
+//    public void update(Event event) {
+//        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+//        Transaction tx1 = session.beginTransaction();
+//        session.update(event);
+//        tx1.commit();
+//        session.close();
+//    }
 
     public void delete(Event event) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
@@ -44,4 +44,8 @@ public class EventDAOImpl implements EventDAO{
 
         return events;
     }
+
+//    public Event findById(int id) {
+//        return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Event.class, id);
+//    }
 }
