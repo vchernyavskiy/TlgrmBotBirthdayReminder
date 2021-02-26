@@ -9,7 +9,7 @@ import utils.HibernateSessionFactoryUtil;
 
 import java.util.List;
 
-public class EventDAOImpl implements EventDAO{
+public class EventDAOImpl implements EventDAO {
 
     public void save(Event event) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();

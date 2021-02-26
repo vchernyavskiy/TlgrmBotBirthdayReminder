@@ -27,7 +27,7 @@ public class NonCommand {
 
                 parsTextIn(map, textIn);
 
-                LocalDate localDate = (LocalDate)map.get("date");
+                LocalDate localDate = (LocalDate) map.get("date");
                 String description = String.valueOf(map.get("description"));
 
                 Event event = new Event(description, localDate, tlguser);
@@ -61,7 +61,7 @@ public class NonCommand {
         map.put("description", textIn.substring(end).trim());
     }
 
-    private boolean textIsCorrectBD(String text){
+    private boolean textIsCorrectBD(String text) {
         //проверка корректности текст на "Дата описание"
 
         Pattern regexp = Pattern.compile("\\d+");
@@ -78,7 +78,7 @@ public class NonCommand {
                 end = m.end();
             }
 
-            for (int e : d){
+            for (int e : d) {
                 if (e == 0) {
                     return false;
                 }

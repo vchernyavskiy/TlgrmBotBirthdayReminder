@@ -12,8 +12,8 @@ public class Event {
     private int id;
     private String description;
     private LocalDate date;
-    @ManyToOne (fetch = FetchType.LAZY)
-    @JoinColumn (name="ownerid")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ownerid")
     private Tlguser owner;
 
     public Event() {

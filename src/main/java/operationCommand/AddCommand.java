@@ -6,7 +6,7 @@ import org.telegram.telegrambots.meta.api.objects.User;
 import org.telegram.telegrambots.meta.bots.AbsSender;
 import services.TlguserService;
 
-public class AddCommand extends OperationCommand{
+public class AddCommand extends OperationCommand {
     public AddCommand(String commandIdentifier, String description) {
         super(commandIdentifier, description);
     }

@@ -11,7 +11,7 @@ import services.TlguserService;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-public class SelectCommand extends OperationCommand{
+public class SelectCommand extends OperationCommand {
     public SelectCommand(String identifier, String description) {
         super(identifier, description);
     }
@@ -40,7 +40,7 @@ public class SelectCommand extends OperationCommand{
 
         List<Event> events = EventService.selectEvents(tlguser);
 
-        if (events.size() == 0){
+        if (events.size() == 0) {
             answerOut = "Вы еще не добавили ни одного напоминания.\nПомощь /help";
         } else {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");

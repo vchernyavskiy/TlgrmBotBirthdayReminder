@@ -24,12 +24,12 @@ public class Bot extends TelegramLongPollingCommandBot {
         this.nonCommand = new NonCommand();
 
         register(new StartCommand("start", "Старт"));
-        register(new HelpCommand("help","Помощь"));
+        register(new HelpCommand("help", "Помощь"));
 
-        register(new AddCommand("add","Добавить напоминание"));
-        register(new SelectCommand("select","Просмотреть напоминания"));
-        register(new UpdateCommand("update","Изменить напоминание"));
-        register(new DeleteCommand("delete","Удалить напоминание"));
+        register(new AddCommand("add", "Добавить напоминание"));
+        register(new SelectCommand("select", "Просмотреть напоминания"));
+        register(new UpdateCommand("update", "Изменить напоминание"));
+        register(new DeleteCommand("delete", "Удалить напоминание"));
     }
 
     /**
@@ -53,8 +53,9 @@ public class Bot extends TelegramLongPollingCommandBot {
 
     /**
      * Метод для настройки сообщения и его отправки.
+     *
      * @param chatId id чата
-     * @param s Строка, которую необходимот отправить в качестве сообщения.
+     * @param s      Строка, которую необходимот отправить в качестве сообщения.
      */
     public synchronized void sendMsg(String chatId, String s) {
         SendMessage sendMessage = new SendMessage();

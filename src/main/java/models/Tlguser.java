@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table (name = "tlgusers")
+@Table(name = "tlgusers")
 public class Tlguser {
 
     @Id
@@ -18,7 +18,7 @@ public class Tlguser {
     private String firstname;
     @Column(nullable = true)
     private String lastname;
-    @OneToMany (mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Event> events;
 
     public Tlguser() {

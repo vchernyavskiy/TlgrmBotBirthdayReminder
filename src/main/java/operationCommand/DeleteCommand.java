@@ -5,7 +5,7 @@ import org.telegram.telegrambots.meta.api.objects.User;
 import org.telegram.telegrambots.meta.bots.AbsSender;
 //import java.io.*;
 
-public class DeleteCommand extends OperationCommand{
+public class DeleteCommand extends OperationCommand {
     public DeleteCommand(String identifier, String description) {
         super(identifier, description);
     }

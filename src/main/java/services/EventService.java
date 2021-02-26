@@ -22,7 +22,7 @@ public class EventService {
 //        eventDAOImpl.update(event);
 //    }
 
-    public static List<Event> selectEvents(Tlguser tlguser){
+    public static List<Event> selectEvents(Tlguser tlguser) {
         return eventDAOImpl.findAllByUser(tlguser);
     }
 

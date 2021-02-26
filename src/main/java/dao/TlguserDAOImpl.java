@@ -6,7 +6,7 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import utils.HibernateSessionFactoryUtil;
 
-public class TlguserDAOImpl implements TlguserDAO{
+public class TlguserDAOImpl implements TlguserDAO {
 
     public Tlguser findByChatId(Long chatId) {
         String q = "from Tlguser where chatid =: chatId";
