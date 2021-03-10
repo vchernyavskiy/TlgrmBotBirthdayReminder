@@ -4,6 +4,7 @@ import dao.EventDAOImpl;
 import models.Event;
 import models.Tlguser;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class EventService {
@@ -14,16 +15,15 @@ public class EventService {
         eventDAOImpl.save(event);
     }
 
-    public static void deleteEvent(Event event) {
-        eventDAOImpl.delete(event);
-    }
-
-//    public static void updateEvent(Event event) {
-//        eventDAOImpl.update(event);
-//    }
-
-    public static List<Event> selectEvents(Tlguser tlguser) {
+    public static List<Event> selectEventsByUser(Tlguser tlguser) {
         return eventDAOImpl.findAllByUser(tlguser);
     }
 
+    public static List<Event> selectEventsByDate(LocalDate date) {
+        return eventDAOImpl.findAllByDate(date);
+    }
+
+    public static void deleteEvent(Event event) {
+        eventDAOImpl.delete(event);
+    }
 }

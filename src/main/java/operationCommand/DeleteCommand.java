@@ -37,7 +37,7 @@ public class DeleteCommand extends OperationCommand {
             TlguserService.updateTlguser(tlguser);
         }
 
-        List<Event> events = EventService.selectEvents(tlguser);
+        List<Event> events = EventService.selectEventsByUser(tlguser);
         Collections.sort(events);
         if (events.size() == 0) {
             answerOut = "Вы еще не добавили ни одного напоминания.\nПомощь /help";

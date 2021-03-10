@@ -8,6 +8,14 @@ import utils.HibernateSessionFactoryUtil;
 
 public class TlguserDAOImpl implements TlguserDAO {
 
+    public void save(Tlguser tlguser) {
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Transaction tx1 = session.beginTransaction();
+        session.save(tlguser);
+        tx1.commit();
+        session.close();
+    }
+
     public Tlguser findByChatId(Long chatId) {
         String q = "from Tlguser where chatid =: chatId";
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
@@ -16,14 +24,6 @@ public class TlguserDAOImpl implements TlguserDAO {
         session.close();
 
         return tlguser;
-    }
-
-    public void save(Tlguser tlguser) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction tx1 = session.beginTransaction();
-        session.save(tlguser);
-        tx1.commit();
-        session.close();
     }
 
     public void update(Tlguser tlguser) {
@@ -41,5 +41,4 @@ public class TlguserDAOImpl implements TlguserDAO {
         tx1.commit();
         session.close();
     }
-
 }

@@ -40,7 +40,7 @@ public class NonCommand {
 
         if (tlguser.getState().equals("delete")) {
             //проверить, что есть события
-            List<Event> events = EventService.selectEvents(tlguser);
+            List<Event> events = EventService.selectEventsByUser(tlguser);
             Collections.sort(events);
             if (events.size() == 0) {
                 answerOut = "Вы еще не добавили ни одного напоминания.\nПомощь /help";
@@ -80,7 +80,7 @@ public class NonCommand {
             answerOut = "";
 
             //вывести список после удаления
-            events = EventService.selectEvents(tlguser);
+            events = EventService.selectEventsByUser(tlguser);
             Collections.sort(events);
             if (events.size() == 0) {
                 answerOut = "Все напоминания удалены";
