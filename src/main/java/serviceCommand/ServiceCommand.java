@@ -5,19 +5,13 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.bots.AbsSender;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
-/**
- * Суперкласс для сервисных команд
- */
-abstract class ServiceCommand extends BotCommand {
+public abstract class ServiceCommand extends BotCommand {
 
-    ServiceCommand(String identifier, String description) {
+    public ServiceCommand(String identifier, String description) {
         super(identifier, description);
     }
 
-    /**
-     * Отправка ответа пользователю
-     */
-    void sendAnswer(AbsSender absSender, Long chatId, String text) {
+    public void sendAnswer(AbsSender absSender, Long chatId, String text) {
         SendMessage message = new SendMessage();
         ////включаем поддержку режима разметки, чтобы управлять отображением текста и добавлять эмодзи
         //message.enableMarkdown(true);

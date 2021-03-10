@@ -32,9 +32,6 @@ public class Bot extends TelegramLongPollingCommandBot {
         register(new DeleteCommand("delete", "Удалить напоминание"));
     }
 
-    /**
-     * Ответ на запрос, не являющийся командой
-     */
     @Override
     public void processNonCommandUpdate(Update update) {
         Message msgIn = update.getMessage();
@@ -51,12 +48,6 @@ public class Bot extends TelegramLongPollingCommandBot {
         sendMsg(chatId.toString(), answerOut);
     }
 
-    /**
-     * Метод для настройки сообщения и его отправки.
-     *
-     * @param chatId id чата
-     * @param s      Строка, которую необходимот отправить в качестве сообщения.
-     */
     public synchronized void sendMsg(String chatId, String s) {
         SendMessage sendMessage = new SendMessage();
         sendMessage.setChatId(chatId);

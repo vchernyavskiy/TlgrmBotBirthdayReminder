@@ -1,13 +1,10 @@
+
 import bot.Bot;
-import models.Event;
-import notification.Check;
+import notification.Mailing;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
-
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.util.List;
 
 public class Main {
 
@@ -25,13 +22,9 @@ public class Main {
             e.printStackTrace();
         }
 
-        LocalDate dateNow = LocalDate.now();
-        List<Event> events = Check.getEvents(dateNow);
+        Mailing mailing = new Mailing(bot);
 
-
-
-
-//        Thread thread = new Thread();
-//        thread.start();
+        Thread thread = new Thread(mailing);
+        thread.start();
     }
 }

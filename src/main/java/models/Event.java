@@ -12,7 +12,7 @@ public class Event implements Comparable<Event>{
     private int id;
     private String description;
     private LocalDate date;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "ownerid")
     private Tlguser owner;
 
