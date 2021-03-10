@@ -13,7 +13,6 @@ public class AddCommand extends OperationCommand {
 
     @Override
     public void execute(AbsSender absSender, User user, Chat chat, String[] strings) {
-
         String answerOut;
         Long chatId = chat.getId();
 

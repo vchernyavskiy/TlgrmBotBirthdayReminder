@@ -15,30 +15,28 @@ import java.util.regex.*;
 public class NonCommand {
 
     public String nonCommandExecute(Tlguser tlguser, String textIn) {
-        String answerOut;
+        String answerOut = "Введенный текст не соответствует формату";
 
-        if (tlguser.getState().equals("add")) {
-            if (textIsCorrectBD(textIn)) {
-                //Сохраняем ДР в базе
+        if (tlguser.getState().equals("add") && textIsCorrectBD(textIn)) {
+            //Сохраняем ДР в базе
 
-                Map<String, Object> map = new HashMap<>();
-                map.put("date", null);
-                map.put("description", null);
+            Map<String, Object> map = new HashMap<>();
+            map.put("date", null);
+            map.put("description", null);
 
-                parsTextIn(map, textIn);
+            parsTextIn(map, textIn);
 
-                LocalDate localDate = (LocalDate) map.get("date");
-                String description = String.valueOf(map.get("description"));
+            LocalDate localDate = (LocalDate) map.get("date");
+            String description = String.valueOf(map.get("description"));
 
-                Event event = new Event(description, localDate, tlguser);
-                EventService.saveEvent(event);
+            Event event = new Event(description, localDate, tlguser);
+            EventService.saveEvent(event);
 
-                answerOut = "Добавлено: " + textIn;
-            } else {
-                answerOut = "Введенный текст не соответствует формату";
-            }
-        } else {
-            answerOut = textIn;
+            answerOut = "Добавлено: " + textIn;
+        }
+
+        if (tlguser.getState().equals("delete")) {
+
         }
 
         return answerOut;
