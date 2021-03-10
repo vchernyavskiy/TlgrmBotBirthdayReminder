@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "events")
-public class Event {
+public class Event implements Comparable<Event>{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -51,5 +51,16 @@ public class Event {
 
     public void setOwner(Tlguser owner) {
         this.owner = owner;
+    }
+
+    @Override
+    public int compareTo(Event o) {
+        int r = 0;
+
+        if (this.id == o.id) r = 0;
+        if (this.id > o.id) r = 1;
+        if (this.id < o.id) r = -1;
+
+        return r;
     }
 }

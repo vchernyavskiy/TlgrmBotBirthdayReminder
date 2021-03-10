@@ -5,7 +5,10 @@ import models.Tlguser;
 import services.EventService;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.*;
 
@@ -36,7 +39,59 @@ public class NonCommand {
         }
 
         if (tlguser.getState().equals("delete")) {
+            //проверить, что есть события
+            List<Event> events = EventService.selectEvents(tlguser);
+            Collections.sort(events);
+            if (events.size() == 0) {
+                answerOut = "Вы еще не добавили ни одного напоминания.\nПомощь /help";
+                return answerOut;
+            }
 
+            //проверить, что введен int
+            int num = 0;
+            try {
+                num = Integer.parseInt(textIn);
+            } catch (NumberFormatException ex) {
+                int i = 1;
+                answerOut = "Введите число с номером строки:";
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+                for(Event e : events){
+                    answerOut += "\n" + i + ". " + e.getDescription() + ", " + e.getDate().format(formatter);
+                    i++;
+                }
+                return answerOut;
+            }
+
+            //проверить что введенный номер не больше количества событий
+            if ((events.size() < num) || (num < 1)) {
+                int i = 1;
+                answerOut = "Введен несуществующий номер.\nВведите номер для удаления:";
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+                for(Event e : events){
+                    answerOut += "\n" + i + ". " + e.getDescription() + ", " + e.getDate().format(formatter);
+                    i++;
+                }
+                return answerOut;
+            }
+
+            //удалить
+            Event event = events.get(num - 1);
+            EventService.deleteEvent(event);
+            answerOut = "";
+
+            //вывести список после удаления
+            events = EventService.selectEvents(tlguser);
+            Collections.sort(events);
+            if (events.size() == 0) {
+                answerOut = "Все напоминания удалены";
+            } else {
+                int i = 1;
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+                for(Event e : events){
+                    answerOut += "\n" + i + ". " + e.getDescription() + ", " + e.getDate().format(formatter);
+                    i++;
+                }
+            }
         }
 
         return answerOut;
@@ -60,7 +115,7 @@ public class NonCommand {
     }
 
     private boolean textIsCorrectBD(String text) {
-        //проверка корректности текст на "Дата описание"
+        //проверка корректности текста на "Дата описание"
 
         Pattern regexp = Pattern.compile("\\d+");
         Matcher m = regexp.matcher(text);
